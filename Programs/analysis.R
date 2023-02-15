@@ -213,6 +213,59 @@ result1b1 <- sum.func(sim1type, events=550)
 result1b1
 
 
+#### code for table 1
+
+tab1 <- matrix(nrow=6, ncol=7)
+
+tab1[1,1] <- result1top["lr.rej"]
+tab1[2,1] <- result1top["lr.ss"]
+tab1[3,1] <- result1t1["lr.rej"]
+
+tab1[1,2] <- result1top["hr.rej"]
+tab1[2,2] <- result1top["hr.ss"]
+tab1[3,2] <- result1t1["hr.rej"]
+
+tab1[1,3] <- result1top["km.rej"]
+tab1[2,3] <- result1top["km.ss"]
+tab1[3,3] <- result1t1["km.rej"]
+
+tab1[1,6] <- result1top["psu.ajk.rej"]
+tab1[2,6] <- result1top["psu.ajk.ss"]
+tab1[3,6] <- result1t1["psu.ajk.rej"]
+
+tab1[1,7] <- result1top["rp.asy.rej"]
+tab1[2,7] <- result1top["rp.asy.ss"]
+tab1[3,7] <- result1t1["rp.asy.rej"]
+
+tab1[4,2] <- result1bot["hr.rej"]
+tab1[5,2] <- result1bot["hr.ss"]
+tab1[6,2] <- result1b1["hr.rej"]
+
+tab1[4,4] <- result1bot["km.rej"]
+tab1[5,4] <- result1bot["km.ss"]
+tab1[6,4] <- result1b1["km.rej"]
+
+tab1[4,5] <- result1bot["cox.rej"]
+tab1[5,5] <- result1bot["cox.ss"]
+tab1[6,5] <- result1b1["cox.rej"]
+
+tab1[4,6] <- result1bot["psu.ajk.rej"]
+tab1[5,6] <- result1bot["psu.ajk.ss"]
+tab1[6,6] <- result1b1["psu.ajk.rej"]
+
+tab1[4,7] <- result1bot["rp.asy.rej"]
+tab1[5,7] <- result1bot["rp.asy.ss"]
+tab1[6,7] <- result1b1["rp.asy.rej"]
+
+tab1 <- round(tab1, digits=3)
+
+colnames(tab1) <- c("LR","HR","KM","Tian","Chen","P-o","FPM")
+rownames(tab1) <- c("Power","Sample size","Type 1 error","Power2","Sample size2","Type 1 error2")
+
+print(tab1)
+
+
+
 #### for sim2 nocov, 175; top half of table for scenario 2
 sim2nocov <- readRDS("Results/sim2grpseq/PH.ss175trteff3nocov.fem.age.LTFU0.02times.rds")
 #debug(sum.func)
@@ -241,6 +294,60 @@ result2b1
 
 
 
+### code for table 2
+
+
+tab2 <- matrix(nrow=6, ncol=7)
+
+tab2[1,1] <- result2top["lr.rej"]
+tab2[2,1] <- result2top["lr.ss"]
+tab2[3,1] <- result2t1["lr.rej"]
+
+tab2[1,2] <- result2top["hr.rej"]
+tab2[2,2] <- result2top["hr.ss"]
+tab2[3,2] <- result2t1["hr.rej"]
+
+tab2[1,3] <- result2top["km.rej"]
+tab2[2,3] <- result2top["km.ss"]
+tab2[3,3] <- result2t1["km.rej"]
+
+tab2[1,6] <- result2top["psu.ajk.rej"]
+tab2[2,6] <- result2top["psu.ajk.ss"]
+tab2[3,6] <- result2t1["psu.ajk.rej"]
+
+tab2[1,7] <- result2top["rp.asy.rej"]
+tab2[2,7] <- result2top["rp.asy.ss"]
+tab2[3,7] <- result2t1["rp.asy.rej"]
+
+tab2[4,2] <- result2bot["hr.rej"]
+tab2[5,2] <- result2bot["hr.ss"]
+tab2[6,2] <- result2b1["hr.rej"]
+
+tab2[4,4] <- result2bot["km.rej"]
+tab2[5,4] <- result2bot["km.ss"]
+tab2[6,4] <- result2b1["km.rej"]
+
+tab2[4,5] <- result2bot["cox.rej"]
+tab2[5,5] <- result2bot["cox.ss"]
+tab2[6,5] <- result2b1["cox.rej"]
+
+tab2[4,6] <- result2bot["psu.ajk.rej"]
+tab2[5,6] <- result2bot["psu.ajk.ss"]
+tab2[6,6] <- result2b1["psu.ajk.rej"]
+
+tab2[4,7] <- result2bot["rp.asy.rej"]
+tab2[5,7] <- result2bot["rp.asy.ss"]
+tab2[6,7] <- result2b1["rp.asy.rej"]
+
+tab2 <- round(tab2, digits=3)
+
+colnames(tab2) <- c("LR","HR","KM","Tian","Chen","P-o","FPM")
+rownames(tab2) <- c("Power","Sample size","Type 1 error","Power2","Sample size2","Type 1 error2")
+
+print(tab2)
+
+
+
 #### for sim3 nocov, 220; top half of table for scenario 3
 sim3nocov <- readRDS("Results/sim3grpseq/PH.ss220trteff2nocov.fem.age.LTFU0.02times.rds")
 #debug(sum.func)
@@ -250,8 +357,8 @@ result3top
 summary(sim3nocov)
 # type 1 error row
 sim3type <- readRDS("Results/sim3grpseqtype1/PH.ss220trteff0nocov.fem.age.LTFU0.02times.rds")
-result <- sum.func(sim3type, events=220)
-result
+result3t1 <- sum.func(sim3type, events=220)
+result3t1
 ### average analysis times for scenario 3
 colMeans(sim3nocov[,1:3])
 
@@ -264,8 +371,63 @@ result3bot
 summary(sim3nocov)
 # type 1 error row
 sim3type <- readRDS("Results/sim3grpseqtype1/PH.ss220trteff0allcov.age.fem.LTFU0.02times.rds")
-result <- sum.func(sim3type, events=220)
-result
+result3b1 <- sum.func(sim3type, events=220)
+result3b1
+
+
+
+#### code to produce table 3
+
+
+
+tab3 <- matrix(nrow=6, ncol=7)
+
+tab3[1,1] <- result3top["lr.rej"]
+tab3[2,1] <- result3top["lr.ss"]
+tab3[3,1] <- result3t1["lr.rej"]
+
+tab3[1,2] <- result3top["hr.rej"]
+tab3[2,2] <- result3top["hr.ss"]
+tab3[3,2] <- result3t1["hr.rej"]
+
+tab3[1,3] <- result3top["km.rej"]
+tab3[2,3] <- result3top["km.ss"]
+tab3[3,3] <- result3t1["km.rej"]
+
+tab3[1,6] <- result3top["psu.ajk.rej"]
+tab3[2,6] <- result3top["psu.ajk.ss"]
+tab3[3,6] <- result3t1["psu.ajk.rej"]
+
+tab3[1,7] <- result3top["rp.asy.rej"]
+tab3[2,7] <- result3top["rp.asy.ss"]
+tab3[3,7] <- result3t1["rp.asy.rej"]
+
+tab3[4,2] <- result3bot["hr.rej"]
+tab3[5,2] <- result3bot["hr.ss"]
+tab3[6,2] <- result3b1["hr.rej"]
+
+tab3[4,4] <- result3bot["km.rej"]
+tab3[5,4] <- result3bot["km.ss"]
+tab3[6,4] <- result3b1["km.rej"]
+
+tab3[4,5] <- result3bot["cox.rej"]
+tab3[5,5] <- result3bot["cox.ss"]
+tab3[6,5] <- result3b1["cox.rej"]
+
+tab3[4,6] <- result3bot["psu.ajk.rej"]
+tab3[5,6] <- result3bot["psu.ajk.ss"]
+tab3[6,6] <- result3b1["psu.ajk.rej"]
+
+tab3[4,7] <- result3bot["rp.asy.rej"]
+tab3[5,7] <- result3bot["rp.asy.ss"]
+tab3[6,7] <- result3b1["rp.asy.rej"]
+
+tab3 <- round(tab3, digits=3)
+
+colnames(tab3) <- c("LR","HR","KM","Tian","Chen","P-o","FPM")
+rownames(tab3) <- c("Power","Sample size","Type 1 error","Power2","Sample size2","Type 1 error2")
+
+print(tab3)
 
 
 
@@ -278,8 +440,8 @@ result4top
 summary(sim4nocov)
 # type 1 error row
 sim4type <- readRDS("Results/sim4grpseqtype1/PH.ss150trteff0nocov.fem.age.LTFU0.02times.rds")
-result <- sum.func(sim4type, events=150)
-result
+result4t1 <- sum.func(sim4type, events=150)
+result4t1
 ### average analysis times for scenario 4
 colMeans(sim4nocov[,1:3])
 
@@ -293,9 +455,60 @@ result4bot
 summary(sim4allcov)
 # type 1 error row
 sim4type <- readRDS("Results/sim4grpseqtype1/PH.ss150trteff0allcov.age.fem.LTFU0.02times.rds")
-result <- sum.func(sim4type, events=150)
-result
+result4b1 <- sum.func(sim4type, events=150)
+result4b1
 
 
 
+#### code for table 4
 
+
+
+tab4 <- matrix(nrow=6, ncol=7)
+
+tab4[1,1] <- result4top["lr.rej"]
+tab4[2,1] <- result4top["lr.ss"]
+tab4[3,1] <- result4t1["lr.rej"]
+
+tab4[1,2] <- result4top["hr.rej"]
+tab4[2,2] <- result4top["hr.ss"]
+tab4[3,2] <- result4t1["hr.rej"]
+
+tab4[1,3] <- result4top["km.rej"]
+tab4[2,3] <- result4top["km.ss"]
+tab4[3,3] <- result4t1["km.rej"]
+
+tab4[1,6] <- result4top["psu.ajk.rej"]
+tab4[2,6] <- result4top["psu.ajk.ss"]
+tab4[3,6] <- result4t1["psu.ajk.rej"]
+
+tab4[1,7] <- result4top["rp.asy.rej"]
+tab4[2,7] <- result4top["rp.asy.ss"]
+tab4[3,7] <- result4t1["rp.asy.rej"]
+
+tab4[4,2] <- result4bot["hr.rej"]
+tab4[5,2] <- result4bot["hr.ss"]
+tab4[6,2] <- result4b1["hr.rej"]
+
+tab4[4,4] <- result4bot["km.rej"]
+tab4[5,4] <- result4bot["km.ss"]
+tab4[6,4] <- result4b1["km.rej"]
+
+tab4[4,5] <- result4bot["cox.rej"]
+tab4[5,5] <- result4bot["cox.ss"]
+tab4[6,5] <- result4b1["cox.rej"]
+
+tab4[4,6] <- result4bot["psu.ajk.rej"]
+tab4[5,6] <- result4bot["psu.ajk.ss"]
+tab4[6,6] <- result4b1["psu.ajk.rej"]
+
+tab4[4,7] <- result4bot["rp.asy.rej"]
+tab4[5,7] <- result4bot["rp.asy.ss"]
+tab4[6,7] <- result4b1["rp.asy.rej"]
+
+tab4 <- round(tab4, digits=3)
+
+colnames(tab4) <- c("LR","HR","KM","Tian","Chen","P-o","FPM")
+rownames(tab4) <- c("Power","Sample size","Type 1 error","Power2","Sample size2","Type 1 error2")
+
+print(tab4)
